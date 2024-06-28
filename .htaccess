@@ -1,10 +1,13 @@
+
+
 RewriteEngine on
 
-# Redirect to another domain: vuugle.co.
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} !^(www\.)?vuugle\.co$ [NC]
-RewriteRule .* http://vuugle.co%{REQUEST_URI} [R=301,L]
-# Same for HTTPS:
-RewriteCond %{HTTPS} on
-RewriteCond %{HTTP_HOST} !^(www\.)?vuugle\.co$ [NC]
-RewriteRule .* https://vuugle.co%{REQUEST_URI} [R=301,L]
+RewriteCond %{REQUEST_URI} /(.+)/$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ http://www.vuugle.co/%1 [R=301,L]
+RewriteCond %{REQUEST_URI} !(.+)/$
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+)$ https://www.vuugle.co/$1/ [R=301,L]
+RewriteCond %{HTTP_HOST} !^www\.(.*)$ [OR,NC]
+RewriteCond %{https} off
+RewriteRule ^(.*)$ https://www.vuugle.co/$1 [R=301,L]
