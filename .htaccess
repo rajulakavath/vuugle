@@ -1,13 +1,6 @@
-
-
+//Rewrite to www
+Options +FollowSymLinks
 RewriteEngine on
-
-RewriteCond %{REQUEST_URI} /(.+)/$
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ http://www.vuugle.co/%1 [R=301,L]
-RewriteCond %{REQUEST_URI} !(.+)/$
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^(.+)$ https://www.vuugle.co/$1/ [R=301,L]
-RewriteCond %{HTTP_HOST} !^www\.(.*)$ [OR,NC]
-RewriteCond %{https} off
-RewriteRule ^(.*)$ https://www.vuugle.co/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^vuugle.co[nc]
+RewriteRule ^(.*)$ http://www.vuugle.co/$1 [r=301,nc]
+ 
