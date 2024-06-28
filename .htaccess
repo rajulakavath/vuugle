@@ -1,6 +1,1 @@
-//Rewrite to www
-Options +FollowSymLinks
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^vuugle.co[nc]
-RewriteRule ^(.*)$ http://www.vuugle.co/$1 [r=301,nc]
- 
+
